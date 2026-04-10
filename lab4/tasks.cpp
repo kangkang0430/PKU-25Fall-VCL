@@ -216,32 +216,6 @@ namespace VCX::Labs::Animation {
         return skeleton;
     }
 
-    /*
-    void SaveSimpleImage(const SimpleImage& image, const std::string& filename) {
-        std::vector<unsigned char> rgbData(image.width * image.height * 3);
-    
-        for (int y = 0; y < image.height; y++) {
-            for (int x = 0; x < image.width; x++) {
-                int index = (y * image.width + x) * 3;
-                uint8_t pixel = image.at(x, y);
-                rgbData[index] = pixel;     // R
-                rgbData[index + 1] = pixel; // G
-                rgbData[index + 2] = pixel; // B
-            }
-        }
-    
-        // 保存为PNG
-        int success = stbi_write_png(filename.c_str(), image.width, image.height, 3, rgbData.data(), image.width * 3);
-    
-        if (success) {
-            spdlog::info("PNG图像已保存: {}", filename);
-        } 
-        else {
-            spdlog::error("保存PNG失败: {}", filename);
-        }
-    }
-    */
-    
     std::vector<glm::vec3> ExtractContourPoints(const SimpleImage& skeleton) {
         std::vector<glm::vec3> points;
     
@@ -295,7 +269,7 @@ namespace VCX::Labs::Animation {
         
 
         // Sub-Task 4.2 (bonus=0.5') 输入一张简单的 2D 图像（比如 MNIST 手写数字），提取图像的骨架，作为 IK 的目标轨迹。
-        auto points = LoadSimpleContourFromImage("/Users/kangenming/Desktop/vci-2025/src/VCX/Labs/4-Animation/mnist.bmp");
+        auto points = LoadSimpleContourFromImage("mnist.bmp");
         using Vec3Arr = std::vector<glm::vec3>;
         std::shared_ptr<Vec3Arr> custom(new Vec3Arr(points.begin(), points.end()));
         return custom;
